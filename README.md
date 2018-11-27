@@ -1,3 +1,6 @@
+[![Build Status](https://travis-ci.com/RonKbS/mydiary-react-app.svg?branch=develop)](https://travis-ci.com/RonKbS/mydiary-react-app)
+[![Maintainability](https://api.codeclimate.com/v1/badges/93831916ca35661e2c32/maintainability)](https://codeclimate.com/github/RonKbS/mydiary-react-app/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/93831916ca35661e2c32/test_coverage)](https://codeclimate.com/github/RonKbS/mydiary-react-app/test_coverage)
 # mydiary-react-app
 
 ## baron_s_online_journal
