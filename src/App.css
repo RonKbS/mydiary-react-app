@@ -8,6 +8,10 @@ body {
   background-attachment: fixed;
   -webkit-text-fill-color: rgba(245, 240, 240, 0.966);
 }
+.spinner {
+  top: 110% !important;
+  left: 45% !important;
+}
 .lp-body {
   padding-top: 150px;
   padding-left: 50px;
@@ -16,7 +20,7 @@ body {
   margin-right: 5px;
   border: solid;
   border-width: 3px;
-  border-color: rgb(77, 66, 66) !important;
+  border-color: rgb(253, 250, 250) !important;
 }
 .input-field {
   background-color: transparent;

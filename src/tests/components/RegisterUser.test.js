@@ -21,7 +21,8 @@ describe('RegisterUser component', () => {
 
   window.location.reload = jest.fn();
   const props = {
-    history: { push: jest.fn() },
+    registerSuccess: jest.fn(),
+    signInUser: jest.fn(),
     registerUserSuccess: false,
     loading: false,
     register: jest.fn(),
@@ -41,20 +42,20 @@ describe('RegisterUser component', () => {
     wrapper.unmount();
   });
 
-  it('should not reload on unsuccessful registration', () => {
+  it('should not redirect to landing page on unsuccessful registration', () => {
     const nextProps = {
       registerUserSuccess: false,
     };
     wrapper.setProps({ ...nextProps });
-    expect(window.location.reload).not.toBeCalled();
+    expect(wrapper.instance().props.registerSuccess).not.toBeCalled();
   });
 
-  it('should reload on registering successfully', () => {
+  it('should redirect to landing page on registering successfully', () => {
     const nextProps = {
       registerUserSuccess: true,
     };
     wrapper.setProps({ ...nextProps });
-    expect(window.location.reload).toBeCalled();
+    expect(wrapper.instance().props.signInUser).toBeCalled();
   });
 
   it('should call handleChange on form fill', () => {
