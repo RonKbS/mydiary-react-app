@@ -13,7 +13,7 @@ const LandingPage = () => (
       <p />
     </div>
     <div className="row">
-      <div className="row">
+      <div className="row lp-btn-div">
         <button className="btn btn-light lp-btn" type="button" data-toggle="collapse" data-target="#register" aria-expanded="false" aria-controls="collapseExample">
           <h3>Create Diary</h3>
         </button>
