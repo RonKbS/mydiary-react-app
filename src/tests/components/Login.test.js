@@ -33,10 +33,6 @@ describe('Login component', () => {
     wrapper = shallow(<Login {...props} {...state} />);
   });
 
-  it('should render correctly', () => {
-    expect(wrapper).toMatchSnapshot();
-  });
-
   it('should set state when handleChange event is fired', () => {
     const spy = createSpy('handleChange');
     wrapper.instance().forceUpdate();

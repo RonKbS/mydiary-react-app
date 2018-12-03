@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import { mount } from 'enzyme';
 import NotFound from '../../components/notFound/NotFound';
 import LandingPage from '../../components/landingPage/LandingPage';
+import Dashboard from '../../components/Dashboard';
 
 const mockStore = configureStore([]);
 let store;
@@ -29,7 +30,7 @@ describe('Routes component', () => {
     expect(wrapper.find(NotFound)).toHaveLength(1);
   });
 
-  it('should return the login component for "/login" route path', () => {
+  it('should return the landing page component for "/login" route path', () => {
     const wrapper = mount(
       <MemoryRouter initialEntries={['/']}>
         <Provider store={store}>
@@ -38,5 +39,16 @@ describe('Routes component', () => {
       </MemoryRouter>,
     );
     expect(wrapper.find(LandingPage)).toHaveLength(1);
+  });
+
+  it('should return the dashboard component for "/login" route path', () => {
+    const wrapper = mount(
+      <MemoryRouter initialEntries={['/dashboard']}>
+        <Provider store={store}>
+          <Dashboard />
+        </Provider>
+      </MemoryRouter>,
+    );
+    expect(wrapper.find(Dashboard)).toHaveLength(1);
   });
 });

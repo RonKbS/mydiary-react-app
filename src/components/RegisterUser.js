@@ -26,7 +26,6 @@ export class RegisterUser extends Component {
         password,
       };
       registerSuccess();
-      console.log('inbetween here is where i am');
       signInUser(payload);
     }
   }
