@@ -11,6 +11,7 @@ import {
   CREATE_ENTRY_SUCCESS,
   CREATE_ENTRY_ERROR,
 } from './types';
+import fetchEntries from './entryActions';
 
 const URL_LOCAL = 'https://mydiary-backend.herokuapp.com/api/v1';
 
@@ -61,6 +62,7 @@ export const addEntry = postData => dispatch => {
     .post(`${URL_LOCAL}/entries`, postData)
     .then(response => {
       dispatch({ type: CREATE_ENTRY_SUCCESS, payload: true });
+      dispatch(fetchEntries());
       toast.warn(
         response.data.Message,
         { autoClose: 3500, hideProgressBar: true },
@@ -74,7 +76,6 @@ export const addEntry = postData => dispatch => {
         const errorMessage = error.response.data.Message;
         localStorage.removeItem('login_token');
         dispatch({ type: CREATE_ENTRY_ERROR, payload: errorMessage });
-        return toast.error('Please login again', { autoClose: false, hideProgressBar: true });
       }
       return toast.warn(
         'We had trouble connecting. Try reloading the page',

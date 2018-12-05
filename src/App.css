@@ -32,9 +32,11 @@ input:-webkit-autofill {
 .my-navbar {
   background-color: transparent !important;
 }
+.modal {
+  background-color: rgba(0, 0, 0, 0.623) !important;
+}
 .modal-content {
-  background-color: transparent;
-  color: black;
+  background-color: rgba(0, 0, 0, 0.527);
 }
 .lp-body {
   padding-top: 150px;
@@ -134,4 +136,18 @@ table {
 .title-form-group {
   width: 100%;
   margin-bottom: 0 !important;
+}
+.entry-content{
+  font-family: "Open Sans", sans-serif;
+}
+.entry-container {
+  width: 70%;
+  background-color: transparent;
+  border-width: 0;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+.entry-btn {
+  width: 140%;
+  border: solid white 0.5px;
 }

@@ -2,7 +2,7 @@ import React from 'react';
 import { MemoryRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import NotFound from '../../components/notFound/NotFound';
 import LandingPage from '../../components/landingPage/LandingPage';
 import Dashboard from '../../components/Dashboard';
@@ -42,7 +42,7 @@ describe('Routes component', () => {
   });
 
   it('should return the dashboard component for "/login" route path', () => {
-    const wrapper = mount(
+    const wrapper = shallow(
       <MemoryRouter initialEntries={['/dashboard']}>
         <Provider store={store}>
           <Dashboard />
