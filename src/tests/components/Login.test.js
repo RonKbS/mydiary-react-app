@@ -25,7 +25,7 @@ describe('Login component', () => {
   const props = {
     loading: false,
     isLoggedIn: false,
-    signIn: jest.fn(),
+    dispatch: jest.fn(),
   };
 
   beforeEach(() => {
@@ -42,7 +42,7 @@ describe('Login component', () => {
 
   it('should call handleSubmit on form when submit button is clicked', () => {
     wrapper.instance().handleSubmit(getEvent());
-    expect(wrapper.instance().props.signIn).toBeCalled();
+    expect(wrapper.instance().props.dispatch).toBeCalled();
   });
 
   it('should not redirect if isLoggedIn is false', () => {

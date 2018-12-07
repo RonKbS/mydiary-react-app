@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Loader from 'react-loader';
 import { signInUser } from '../actions/userActions';
+import fetchEntries from '../actions/entryActions';
 
 export class Login extends Component {
   constructor(props) {
@@ -17,6 +18,8 @@ export class Login extends Component {
 
   componentWillReceiveProps(nextProps) {
     if (nextProps.isLoggedIn === true) {
+      const { dispatch } = this.props;
+      dispatch(fetchEntries());
       this.setState({
         redirect: true,
       });
@@ -35,8 +38,8 @@ export class Login extends Component {
       name: username,
       password,
     };
-    const { signIn } = this.props;
-    signIn(payload);
+    const { dispatch } = this.props;
+    dispatch(signInUser(payload));
   };
 
   render() {
@@ -60,7 +63,16 @@ export class Login extends Component {
                       <div className="input-group-prepend">
                         <div className="input-group-text"><i className="fas fa-envelope" /></div>
                       </div>
-                      <input type="text" name="username" className="form-control input-field" id="username" value={username} onChange={this.handleChange} required />
+                      <input
+                        type="text"
+                        name="username"
+                        className="form-control input-field"
+                        autoComplete="off"
+                        id="username"
+                        value={username}
+                        onChange={this.handleChange}
+                        required
+                      />
                     </div>
                   </div>
                   <div className="form-group">
@@ -69,7 +81,16 @@ export class Login extends Component {
                       <div className="input-group-prepend">
                         <div className="input-group-text"><i className="fas fa-user" /></div>
                       </div>
-                      <input type="password" className="form-control input-field" name="password" id="password" value={password} onChange={this.handleChange} required />
+                      <input
+                        type="password"
+                        className="form-control input-field"
+                        name="password"
+                        id="password"
+                        autoComplete="off"
+                        value={password}
+                        onChange={this.handleChange}
+                        required
+                      />
                     </div>
                   </div>
                   <Loader loaded={!loading}>
@@ -87,7 +108,7 @@ export class Login extends Component {
 
 Login.propTypes = {
   loading: PropTypes.bool,
-  signIn: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
   isLoggedIn: PropTypes.bool,
 };
 
@@ -102,4 +123,4 @@ const mapStateToProps = state => ({
   loginError: state.user.loginError,
 });
 
-export default connect(mapStateToProps, { signIn: signInUser })(Login);
+export default connect(mapStateToProps)(Login);

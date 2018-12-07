@@ -35,31 +35,31 @@ export class AddEntry extends Component {
         <div className="modal fade bg-transparent my-navbar modal-style" id="addEntry" tabIndex="-1" role="dialog" aria-labelledby="addEntryTitle" aria-hidden="true">
           <div className="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div className="modal-content">
-              <div className="modal-header">
-                <div className="md-form mb-5 title-form-group">
-                  <div className="input-group mb-2">
-                    <input
-                      type="text"
-                      name="title"
-                      className="input-entry-field"
-                      placeholder="Title..."
-                      maxLength="30"
-                      autoComplete="off"
-                      id="title"
-                      value={title}
-                      onChange={this.handleChange}
-                      required
-                    />
+              <form id="add-entry-form" onSubmit={this.handleSubmit}>
+                <div className="modal-header">
+                  <div className="md-form mb-5 title-form-group">
+                    <div className="input-group mb-2">
+                      <input
+                        type="text"
+                        name="title"
+                        className="input-entry-field"
+                        placeholder="Title..."
+                        maxLength="30"
+                        pattern="^[a-zA-Z].+"
+                        autoComplete="off"
+                        id="title"
+                        value={title}
+                        onChange={this.handleChange}
+                      />
+                    </div>
                   </div>
+                  <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
                 </div>
-                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              <div className="modal-body">
-                <div className="row">
-                  <div className="col-12">
-                    <form id="add-entry-form" onSubmit={this.handleSubmit}>
+                <div className="modal-body">
+                  <div className="row">
+                    <div className="col-12">
                       <div className="form-group">
                         <div className="input-group mb-2">
                           <textarea
@@ -77,13 +77,13 @@ export class AddEntry extends Component {
                           />
                         </div>
                       </div>
-                    </form>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="modal-footer">
-                <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleSubmit}>Save</button>
-              </div>
+                <div className="modal-footer">
+                  <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleSubmit}>Save</button>
+                </div>
+              </form>
             </div>
           </div>
         </div>

@@ -18,6 +18,8 @@ import {
   CREATE_ENTRY_INITIATED,
   CREATE_ENTRY_SUCCESS,
   CREATE_ENTRY_ERROR,
+  GET_ALL_ENTRIES_INITIATED,
+  GET_ALL_ENTRIES_SUCCESS,
 } from '../../actions/types';
 
 // const URL_LOCAL = 'http://127.0.0.1:5000/api/v1';
@@ -93,13 +95,19 @@ describe('userAction', () => {
   });
 
   it('should post an article', async () => {
+    const response = {
+      Message: 'Entries',
+    };
     mock.onPost(`${URL_LOCAL}/entries`).reply(201);
+    mock.onGet(`${URL_LOCAL}/entries`).reply(200, response);
     addEntry()(store.dispatch);
     await flushAllPromises();
     expect(store.getActions()).toEqual(
       [
         { type: CREATE_ENTRY_INITIATED, payload: true },
         { type: CREATE_ENTRY_SUCCESS, payload: true },
+        { type: GET_ALL_ENTRIES_INITIATED, payload: true },
+        { type: GET_ALL_ENTRIES_SUCCESS, payload: 'Entries' },
       ],
     );
   });
